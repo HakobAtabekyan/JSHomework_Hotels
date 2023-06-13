@@ -1,0 +1,92 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	width: 1140px;
+	overflow: hidden;
+}
+h2{
+    text-align: center;
+    color: rgb(15, 88, 30);
+    font-size: 35px;
+}
+p{
+    color: aliceblue;
+}
+.modal-content {
+	background-image: url(./photo-1596436889106-be35e843f974.jpg);
+    background-size: cover;
+	margin:  auto;
+	padding: 20px;
+	width: 100%;
+    /* height:100vh; */
+    
+}
+
+.login {
+	text-align: center;
+	padding: 50px;
+}
+
+.login input {
+	border: none;
+	border-bottom: 2px solid #454F5B;
+	padding: 12px 70px;
+	margin: 25px 0;
+}
+
+.login-btn {
+	cursor: pointer;
+	border: 0;
+	border-radius: 4px;
+	font-weight: 600;
+	margin: 25px 10px;
+	padding: 20px 50px;
+	box-shadow: 0 0 20px rgba(48, 155, 68, 0.9);
+	transition: 0.4s;
+}
+
+.login-btn:hover {
+	color: white;
+	box-shadow: 0 0 20px #28563a;
+	background-color: #454F5B;
+}
+
+.register {
+	text-align: center;
+	padding: 85px;
+}
+
+.register input {
+	border: none;
+	border-bottom: 2px solid #454F5B;
+	padding: 12px 70px;
+	margin: 25px 0;
+}
+
+.register-btn {
+	cursor: pointer;
+	border: 0;
+	border-radius: 4px;
+	font-weight: 600;
+	margin: 25px 10px;
+	padding: 20px 50px;
+	box-shadow: 0 0 20px rgba(48, 155, 68, 0.9);
+	color: white;
+	background: #454F5B;
+	transition: 0.4s;
+}
+
+.register-btn:hover {
+	color: black;
+	box-shadow: 0 0 20px #454F5B;
+	background-color: white;
+}
+
+.acc-form {
+	display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
