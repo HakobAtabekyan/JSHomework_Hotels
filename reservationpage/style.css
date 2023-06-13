@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    color: #000;
+
+    
+ }
+ body{
+   background-color: #895028;
+ }
+
+ .btn{
+   border: 1px solid peru;
+   padding: 10px;
+   border-radius: 25px;
+ }
+
+ section{
+   background-color: #89674e;
+   border-radius: 15px;
+    max-width: 1200px;
+    margin: 15px auto;
+    
+ }
+
+ .logo{
+   margin-bottom: 15px;
+   color: #f0f0f2;
+   font: 2em sans-serif;
+ }
+
+
+ .flex{
+
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   
+
+ }
+ .navbar {
+   margin-left: 15px;
+   padding-bottom: 15px;
+   display: flex;
+   gap: 25px;
+   
+   
+ } 
+
+ /* Slideshow container */
+.slideshow-container {
+   max-width: 1200px;
+   height: 600px;
+   max-height: 500px;
+   position: relative;
+   margin: auto;
+   overflow: hidden;
+ }
+ 
+ /* Next & previous buttons */
+ .prev, .next {
+   cursor: pointer;
+   position: absolute;
+   top: 50%;
+   width: auto;
+   padding: 16px;
+   margin-top: -22px;
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   transition: 0.6s ease;
+   border-radius: 0 3px 3px 0;
+   user-select: none;
+ }
+ 
+ /* Position the "next button" to the right */
+ .next {
+   right: 0;
+   border-radius: 3px 0 0 3px;
+ }
+ 
+ /* On hover, add a black background color with a little bit see-through */
+ .prev:hover, .next:hover {
+   background-color: rgba(0,0,0,0.8);
+ }
+ 
+ Caption text
+ /* .text {
+   color: #f2f2f2;
+   font-size: 15px;
+   padding: 8px 12px;
+   position: absolute;
+   bottom: 8px;
+   width: 100%;
+   text-align: center; */
+ 
+ 
+ /* Number text (1/3 etc) */
+ .numbertext {
+   color: #f2f2f2;
+   font-size: 12px;
+   padding: 8px 12px;
+   position: absolute;
+   top: 0;
+ }
+ .controls{
+   margin: 25px;
+ }
+ .grid1{
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .floatLabel{
+   background-color: rgb(231, 220, 199);
+   padding: 5px;
+   border-radius: 15px;
+ }
+ button{
+  background-color: #0eb237; 
+  padding: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+ }
+
+.append-elements{
+   display: flex;
+   justify-content:center;
+   gap:25px;
+   flex-wrap: wrap;
+   
+}
+
+
+.img-overflow{
+   width: 250px;
+   height: 200px;
+}
+.bottom-element-box{
+   display: flex;
+   justify-content: space-around;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 200px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: rgba(224, 224, 224, 0);
+	
+}
+
+.modal-content {
+	background-color: #d0c6c6;
+	margin: auto;
+	padding: 20px;
+	width: 70%;
+}
+
+.login {
+	text-align: center;
+	padding: 50px;
+}
+
+.login input {
+	border: none;
+	border-bottom: 2px solid #cccfd4;
+	padding: 12px 70px;
+	margin: 25px 0;
+}
+
+.login-btn {
+	cursor: pointer;
+	border: 0;
+	border-radius: 4px;
+	font-weight: 600;
+	margin: 25px 10px;
+	padding: 30px 50px;
+
+}
+
+.login-btn:hover {
+	background-color: #454F5B;
+}
+
+
+.acc-form {
+	display: flex;
+}
+
+.fav-modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.fav-modal h1 {
+	color: #34495e;
+	text-align: center;
+}
+
+.fav-modal-content {
+	width: 80%;
+	background-color: #fefefe;
+	margin: 200px auto;
+	padding: 28px;
+	border: 1px solid #888;
+}
+
+.order-modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.order-modal-content {
+	width: 80%;
+	background-color: #fefefe;
+	margin: 200px auto;
+	padding: 28px;
+	border: 1px solid #888;
+}
+
+.order-modal h1 {
+	color: #34495e;
+	text-align: center;
+}
