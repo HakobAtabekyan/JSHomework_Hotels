@@ -1,3 +1,16 @@
+
+const currentuser = JSON.parse(localStorage.getItem("lastuser"));
+if (!currentuser) {
+  window.location.href = "../index.html"; 
+
+}
+
+let usersection = document.querySelector('.user');
+usersection.innerHTML = currentuser.username;
+usersection.addEventListener("click",()=>{
+   localStorage.removeItem("lastuser");
+})
+
 let navbar = document.querySelector('.header .navbar');
 
 document.querySelector('#menu-btn').onclick = () =>{

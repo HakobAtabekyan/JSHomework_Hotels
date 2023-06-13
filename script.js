@@ -2,15 +2,15 @@
 // Checking if user already loged in
 
 
-const currentuser = localStorage.getItem("lastuser");
+const currentuser = JSON.parse(localStorage.getItem("lastuser"));
 if (currentuser) {
-  window.location.href = "./mainpage/index.html";  
+  window.location.href = "./mainpage/index.html";
 }
 
-let userlist = localStorage.getItem("lastuser");
+let userlist = JSON.parse(localStorage.getItem("userlist"));
 if (!userlist) {
   userlist = [];
-  localStorage.setItem("userlist", userlist);
+  localStorage.setItem("userlist", JSON.stringify(userlist));
 }
 
 function register() {
@@ -41,8 +41,8 @@ function register() {
 
     userlist.push(newuser)
 
-    localStorage.setItem("userlist", userlist);
-    localStorage.setItem("lastuser", newuser);
+    localStorage.setItem("userlist", JSON.stringify(userlist));
+    localStorage.setItem("lastuser", JSON.stringify(newuser));
     document.getElementById("registrationBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "block";
 
@@ -59,16 +59,16 @@ function login() {
   let user = userlist.find((item) => item.username == loginUsername)
 
   if (!user) {
-   alert("Invalid email");
+    alert("Invalid email");
     return;
 
   }
 
-if(user.password === loginPassword){
+  if (user.password === loginPassword) {
 
-  window.location.href = "./mainpage/index.html";
-  localStorage.setItem("lastuser", user);
-} else {
+    window.location.href = "./mainpage/index.html";
+    localStorage.setItem("lastuser", JSON.stringify(user));
+  } else {
     alert("Invalid password");
   }
 }
