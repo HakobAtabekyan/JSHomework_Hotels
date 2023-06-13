@@ -3,17 +3,19 @@
 	padding: 0;
 }
 
-body{
+body{	
 	width: 1140px;
 	overflow: hidden;
+	margin: 0 auto;
 }
 h2{
     text-align: center;
     color: rgb(15, 88, 30);
     font-size: 35px;
 }
-p{
+p, h1{
     color: aliceblue;
+	background-color: #585a5c7e;
 }
 .modal-content {
 	background-image: url(./photo-1596436889106-be35e843f974.jpg);

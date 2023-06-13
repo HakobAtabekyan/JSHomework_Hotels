@@ -1,46 +1,74 @@
-// Check if the user is already registered
-// if (localStorage.getItem("username") && localStorage.getItem("password")) {
-//     document.getElementById("registrationBlock").style.display = "none";
-//   } else {
-//     document.getElementById("loginBlock").style.display = "none";
-//   }
-  
-  // Function to register the user
-  function register() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    
-    // // Save the registration details in localStorage
-    // localStorage.setItem("username", username);
-    // localStorage.setItem("password", password);
-    
-    // Hide the registration block and show the login block
-    // document.getElementById("registrationBlock").style.display = "none";
-    // document.getElementById("loginBlock").style.display = "block";
-    if (username.length === 0 || password.length === 0) {
-        alert("Please enter both username and password");
-        return;
-      }else {
-        localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+
+// Checking if user already loged in
+
+
+const currentuser = JSON.parse(localStorage.getItem("lastuser"));
+if (currentuser) {
+  window.location.href = "./mainpage/index.html";
+}
+
+let userlist = JSON.parse(localStorage.getItem("userlist"));
+if (!userlist) {
+  userlist = [];
+  localStorage.setItem("userlist", JSON.stringify(userlist));
+}
+
+function register() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  if (username.length === 0 || password.length === 0) {
+    alert("Please enter both email and password");
+    return;
+  } else if (!username.includes("@")) {
+    alert("Please enter valid email");
+    return;
+
+  } else {
+
+    let newuser = userlist.find((item) => item.username == username)
+
+    if (newuser) {
+      alert("This email already registered");
+      return;
+
+    }
+
+    newuser = {
+      "username": username,
+      "password": password
+    }
+
+    userlist.push(newuser)
+
+    localStorage.setItem("userlist", JSON.stringify(userlist));
+    localStorage.setItem("lastuser", JSON.stringify(newuser));
     document.getElementById("registrationBlock").style.display = "none";
     document.getElementById("loginBlock").style.display = "block";
 
-      }
   }
- 
+}
 
-  
-  // Function to perform login
-  function login() {
-    var loginUsername = document.getElementById("loginUsername").value;
-    var loginPassword = document.getElementById("loginPassword").value;
-    
-    // Check if the login details match the registration details
-    if (  loginUsername === localStorage.getItem("username") && loginPassword === localStorage.getItem("password")) {
-        window.location.href = "second_page.html";
-      // Perform further actions after successful login
-    } else {
-      alert("Invalid username or password");
-    }
+
+
+// Function to perform login
+function login() {
+  var loginUsername = document.getElementById("loginUsername").value;
+  var loginPassword = document.getElementById("loginPassword").value;
+
+  let user = userlist.find((item) => item.username == loginUsername)
+
+  if (!user) {
+    alert("Invalid email");
+    return;
+
   }
+
+  if (user.password === loginPassword) {
+
+    window.location.href = "./mainpage/index.html";
+    localStorage.setItem("lastuser", JSON.stringify(user));
+  } else {
+    alert("Invalid password");
+  }
+}

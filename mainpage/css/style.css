@@ -64,7 +64,10 @@ section{
    margin-top: 1rem;
    background-color: var(--main-color);
 }
-
+.user{
+   color:white;
+   font-size: 18px;
+}
 .btn:hover{
    border-radius: 5rem;
    background-color: var(--sub-color);
