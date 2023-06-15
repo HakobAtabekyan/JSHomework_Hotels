@@ -9,46 +9,68 @@ let reservations = JSON.parse(localStorage.getItem("reservations"));
 
 if (!reservations) {
 
-   // let userreservations = reservations.filter(item => item.user == currentuser.username);
-   let userreservations = []; 
-   if (userreservations.length == 0) {
+   reservations = [];
+   localStorage.setItem("reservations", JSON.stringify(reservations))
 
-      for (let index = 0; index < 10; index++) {
-         let newreserv = {
-            user: currentuser.username,
-            hotelname: `Hotel ${index}`,
-            checkin: new Date(`2023-07-2${index}`),
-            checkout: new Date(`2023-08-2${index}`),            
-            rooms: index + 1,
-            adults: 2,
-            childs: 2
-         }
-         userreservations.push(newreserv)
-      }
+}
+let userreservations = reservations.filter(item => item.user == currentuser.username);
 
-   }
-   
-   if (userreservations.length > 0) {
-
-      let tableblock = document.querySelector("table");
-      console.log(tableblock)
-      // tableblock.innerHTML = "";
-      tableblock.style.display = "block";
+showtable();
+function showtable() {
+   let tableblock = document.querySelector("table");
+   tableblock.innerHTML = "";
+   if ((reservations.length > 0 && currentuser.username == "admin@mail.com") || userreservations.length > 0) {
+      tableblock.parentElement.style.display = "block";
       let titlerow = document.createElement("tr");
-      titlerow.innerHTML = "<td>User</td><td>Hotel</td><td>Remaining days</td><td>Check in date</td><td>Check out date</td><td>Rooms</td><td>Adults</td><td>Childs</td><td></td>"
+      titlerow.innerHTML = "<th>User</th><th>Hotel</th><th>Remaining days</th><th>Check in date</th><th>Check out date</th><th>Rooms</th><th>Adults</th><th>Childs</th>"
       tableblock.append(titlerow)
-      userreservations.forEach((element, index) => {
+      reservations.forEach((element, index) => {
+         if (element.user == currentuser.username || currentuser.username == "admin@mail.com") {
+            console.log(element)
+            let newrow = document.createElement("tr");
+            newrow.innerHTML = `<td>${element.user}</td><td>${element.hotelname}</td><td>${diffInDays(new Date(), new Date(element.checkin))}</td><td>${element.checkin}</td> <td>${element.checkout}</td><td>${element.rooms}</td><td>${element.adults}</td><td>${element.childs}</td><button>DELETE</button>`
+            newrow.id = `${index}reservation`
+            tableblock.append(newrow);
+         }
 
-         let newrow = document.createElement("tr");
-         newrow.innerHTML = `<td>${element.user}</td><td>${element.hotelname}</td><td>${diffInDays(new Date(), element.checkin)}</td><td>${element.checkin.toLocaleDateString()}</td> <td>${element.checkout.toLocaleDateString()}</td><td>${element.rooms}</td><td>${element.adults}</td><td>${element.childs}</td><button>DELETE</button>`
-         newrow.id = `reservation${index}`
-         tableblock.append(newrow);
       });
-      console.log(userreservations)
+      let btns = tableblock.querySelectorAll("button");
+      btns.forEach(element => {
+         element.addEventListener("click", (e) => {
+
+            let index = parseInt(e.target.parentElement.id)
+            let x = reservations.splice(index, 1)
+            showtable();
+
+         })
+
+      });
+
+   } else {
+      tableblock.parentElement.style.display = "none";
+
 
    }
 }
 
+let chekbtn = document.querySelector(".availability .btn");
+
+chekbtn.addEventListener("click", (e) => {
+   // e.preventDefault();
+   let newreserv = {
+      user: currentuser.username,
+      hotelname: ``,
+      checkin: document.querySelector(".availability .check_in").value,
+      checkout: document.querySelector(".availability .check_out").value,
+      rooms: document.querySelector(".availability .rooms").value,
+      adults: document.querySelector(".availability .adults").value,
+      childs: document.querySelector(".availability .childs").value
+   }
+
+   localStorage.setItem("newreserv", JSON.stringify(newreserv))
+
+
+})
 
 function diffInDays(date1, date2) {
 

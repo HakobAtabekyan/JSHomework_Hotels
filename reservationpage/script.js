@@ -141,8 +141,10 @@ const filterOptions = [
      docelems.innerHTML = `
      <div class="top-element-box"> 
        <img class="img-overflow" src=${item.imageSrc} />
-     </div>
+     </div>.
+     <h2> ${item.name} </h2>
      <div class="bottom-element-box">
+     
        <div class="bottom-element-box-border">
          <span class="frstSpan">
            <p class="raiting">Рейтинг ${item.rating}</p>
@@ -151,7 +153,7 @@ const filterOptions = [
            <p class="dis">${item.pricePerNight} $</p>
          </span>
        </div>
-       <button type="submit" value="Submit" class="col-1-4" id="arm">забронирават</button>
+       <button type="submit" value="Submit" class="col-1-4" id="${item.name}">Забронировать</button>
    
      </div>
          `;
@@ -161,21 +163,39 @@ const filterOptions = [
  generetaProducts();
  
 let modal = document.querySelector("#myModal");
-let account = document.querySelector(".col-1-4");
-let span = document.getElementsByClassName("close")[0];
+let accounts = document.querySelectorAll(".col-1-4");
+
+accounts.forEach(element => {  
+  element.addEventListener("click",(e)=>{
+    e.preventDefault();
+    let newreserv = JSON.parse(localStorage.getItem("newreserv"));
+    newreserv.hotelname = e.target.id;
+    let reservations = JSON.parse(localStorage.getItem("reservations"));
+    reservations.push(newreserv);
+    localStorage.setItem("reservations",JSON.stringify(reservations))
+    window.location.href = "../mainpage/index.html";
+
+  })
+});
 
 
 
-account.addEventListener('click', function () {
-	modal.style.display = "block";
-})
 
-span.addEventListener('click', function () {
-	modal.style.display = "none";
-})
 
-window.addEventListener('click', function (e) {
-	if (e.target == modal) {
-		modal.style.display = "none";
-	}
-})
+// let span = document.getElementsByClassName("close")[0];
+
+
+
+// account.addEventListener('click', function () {
+// 	modal.style.display = "block";
+// })
+
+// span.addEventListener('click', function () {
+// 	modal.style.display = "none";
+// })
+
+// window.addEventListener('click', function (e) {
+// 	if (e.target == modal) {
+// 		modal.style.display = "none";
+// 	}
+// })

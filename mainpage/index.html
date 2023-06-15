@@ -82,7 +82,7 @@
 
 </section>
 <section class="myreservations">
-   <h1>My reservations</h1>
+   <h1>Reservations</h1>
 <table>
    
 </table>
@@ -95,19 +95,19 @@
 
 <section class="availability" id="availability">
 
-   <form action="" method="post">
+   <form action="../reservationpage/index.html" >
       <div class="flex">
          <div class="box">
             <p>check in <span>*</span></p>
-            <input type="date" name="check_in" class="input" required>
+            <input type="date" name="check_in" class="input check_in" required>
          </div>
          <div class="box">
             <p>check out <span>*</span></p>
-            <input type="date" name="check_out" class="input" required>
+            <input type="date" name="check_out" class="input check_out" required>
          </div>
          <div class="box">
             <p>adults <span>*</span></p>
-            <select name="adults" class="input" required>
+            <select name="adults" class="input adults" required>
                <option value="1">1 adult</option>
                <option value="2">2 adults</option>
                <option value="3">3 adults</option>
@@ -118,8 +118,8 @@
          </div>
          <div class="box">
             <p>childs <span>*</span></p>
-            <select name="childs" class="input" required>
-               <option value="-">0 child</option>
+            <select name="childs" class="input childs" required>
+               <option value="0">0 child</option>
                <option value="1">1 child</option>
                <option value="2">2 childs</option>
                <option value="3">3 childs</option>
@@ -130,7 +130,7 @@
          </div>
          <div class="box">
             <p>rooms <span>*</span></p>
-            <select name="rooms" class="input" required>
+            <select name="rooms" class="input rooms" required>
                <option value="1">1 room</option>
                <option value="2">2 rooms</option>
                <option value="3">3 rooms</option>
