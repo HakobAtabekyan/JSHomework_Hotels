@@ -20,7 +20,7 @@ function showtable() {
    let tableblock = document.querySelector("table");
    tableblock.innerHTML = "";
    if ((reservations.length > 0 && currentuser.username == "admin@mail.com") || userreservations.length > 0) {
-      tableblock.parentElement.style.display = "block";
+      tableblock.parentNode.style.display = "block";
       let titlerow = document.createElement("tr");
       titlerow.innerHTML = "<th>User</th><th>Hotel</th><th>Remaining days</th><th>Check in date</th><th>Check out date</th><th>Rooms</th><th>Adults</th><th>Childs</th>"
       tableblock.append(titlerow)
@@ -40,6 +40,7 @@ function showtable() {
 
             let index = parseInt(e.target.parentElement.id)
             let x = reservations.splice(index, 1)
+            localStorage.setItem("reservations", JSON.stringify(reservations))
             showtable();
 
          })
@@ -47,7 +48,8 @@ function showtable() {
       });
 
    } else {
-      tableblock.parentElement.style.display = "none";
+      console.log(tableblock.parentNode);
+      tableblock.parentNode.style.display = "none";
 
 
    }
